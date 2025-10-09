@@ -48,9 +48,20 @@ The following volumes are used to persist data:
     ```sh
     ./tools/setup-directories.sh /path/to/media/storage
     ```
-3. Create a `./env/proton.env` file for Proton VPN credentials.
-4. Create a `./env/qbit.env` file for qBittorrent credentials, used to update qBittorrents port.
-6. Run the following command to start the services:
+3. Create the `./env` directory and the following environment variable files and keys:
+- `proton.env` - Proton VPN credentials. TODO: Change variables to actual
+  ```sh
+  WIREGUARD_PUBLIC_KEY=123
+  WIREGUARD_IP=10.0.0.1
+  ```
+- `qbit.env` - qBittorrent credentials.
+  ```sh
+  QBIT_USER=admin
+  QBIT_PASS=admin
+  ```
+- `wg-private.key` - Wireguard private key
+- `wg-public.key` - Wireguard public key
+4. Run the following command to start the services:
     ```sh
     docker-compose up -d
     ```
