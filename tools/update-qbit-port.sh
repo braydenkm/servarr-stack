@@ -6,7 +6,7 @@
 # - Sets qBittorrent forwarding port using API
 
 
-CURRENT_DIR=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
+CURRENT_DIR=$(cd $(dirname $0) && pwd)
 source "${CURRENT_DIR}"/../env/qbit.env 
 
 USER="${QBIT_USER}"
