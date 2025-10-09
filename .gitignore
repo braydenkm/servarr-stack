@@ -1,0 +1,9 @@
+
+# GIT IGNORE
+
+# Environment variables
+env/
+
+# Wireguard VPN keys
+wireguard/keys/
+
