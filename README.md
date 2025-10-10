@@ -51,8 +51,20 @@ The following volumes are used to persist data:
 3. Create the `./env` directory and the following environment variable files and keys:
 - `proton.env` - Proton VPN credentials. TODO: Change variables to actual
   ```sh
-  WIREGUARD_PUBLIC_KEY=123
-  WIREGUARD_IP=10.0.0.1
+  # --- PROTON ENVIRONMENT ---
+  # Proton VPN WireGuard
+  # Set these values found in Proton VPN Wireguard config
+  WIREGUARD_PRIVATE_KEY=VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+  WIREGUARD_ADDRESSES=YY.YY.YY.YY/32
+  WIREGUARD_PUBLIC_KEY=ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ
+  WIREGUARD_ENDPOINT=XX.XX.XX.XX:51820
+  
+  # - Proton VPN -
+  VPN_SERVICE_PROVIDER=protonvpn
+  VPN_TYPE=wireguard
+  
+  # Allow LAN access to qBittorrent, Sonarr, Radarr, etc.
+  FIREWALL_OUTBOUND_SUBNETS=192.168.2.0/24
   ```
 - `qbit.env` - qBittorrent credentials.
   ```sh
@@ -65,3 +77,4 @@ The following volumes are used to persist data:
     ```sh
     docker-compose up -d
     ```
+
