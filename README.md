@@ -49,7 +49,7 @@ The following volumes are used to persist data:
     ./tools/setup-directories.sh /path/to/media/storage
     ```
 3. Create the `./env` directory and the following environment variable files and keys:
-- `proton.env` - Proton VPN credentials. TODO: Change variables to actual
+- `proton.env` - Proton VPN credentials.
   ```sh
   # --- PROTON ENVIRONMENT ---
   # Proton VPN WireGuard
@@ -93,4 +93,5 @@ I used the following approach making use of a VPS.
 - ... Any other services you want accessible remotely.
 2. Host a Wireguard sever on the VPS, setup a connection between home network and VPS.
 3. Setup Nginx Proxy Manager on VPS. Add a proxy for each A record domain pointing to IP/Port of corresponding service.
+
 
