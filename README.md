@@ -78,3 +78,19 @@ The following volumes are used to persist data:
     docker-compose up -d
     ```
 
+## Getting around CGNAT
+There are a couple ways to get around CGNAT, mostly relying on a external server or 3rd party to point to your internal services.
+I used the following approach making use of a VPS.
+
+### Requirements:
+- External server (VPS)
+- Domain name
+
+### Steps:
+1. Setup A records on domain pointing to VPS public IP:
+- `jellyfin.mydomain.com`
+- `jellyseerr.mydomain.com`
+- ... Any other services you want accessible remotely.
+2. Host a Wireguard sever on the VPS, setup a connection between home network and VPS.
+3. Setup Nginx Proxy Manager on VPS. Add a proxy for each A record domain pointing to IP/Port of corresponding service.
+
