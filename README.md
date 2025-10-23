@@ -1,4 +1,4 @@
-# ServarrStack
+# Servarr Stack
 Deployment of Arr stack, qBittorrent, and Jellyfin through Docker.
 This repository contains the configuration files for setting up a media server using Docker Compose. The services included are:
 - Jellyfin
@@ -9,8 +9,10 @@ This repository contains the configuration files for setting up a media server u
 - Sonarr
 - Prowlarr
 
+
 ## Github
 [github.com/braydenkm/ServarrStack](https://github.com/braydenkm/ServarrStack)
+
 
 ## Ports
 The following ports are exposed for the web UIs of the services:
@@ -20,6 +22,7 @@ The following ports are exposed for the web UIs of the services:
 - `7878` - Radarr
 - `8989` - Sonarr
 - `9696` - Prowlarr
+
 
 ## Volumes
 The following volumes are used to persist data:
@@ -34,10 +37,12 @@ The following volumes are used to persist data:
 - `~/servarr/sonarr/config:/config`
 - `~/servarr/prowlarr/config:/config`
 
+
 ## Prerequisites
 - Linux
 - Docker
 - Docker Compose
+
 
 ## Setup
 1. Clone the repository.
@@ -73,17 +78,29 @@ The following volumes are used to persist data:
   ```
 - `wg-private.key` - Wireguard private key
 - `wg-public.key` - Wireguard public key
-4. Run the following command to start the services:
+4. Add aliases to .bashrc:
+    1. Add line to ~/.bashrc `[[ -f ${HOME}/servarr/tools/servarr-aliases.sh ]] && { source "${HOME}/servarr/tools/servarr-aliases.sh"; }`
+    2. Save changes and source `. ~/.bashrc`
+    3. Verify aliases are set `alias`
+5. Start services using the aliases:
     ```sh
-    docker-compose up -d
+    arr-up
+    jelly-up
     ```
+6. Update qBittorrent's listening port:
+    1. Use alias `vpn-port`
+8. Setup Cronjob to update qBittorrent's listening port on recurring task:
+    1. Edit Crontab `crontab -e`
+    2. Add line `*/5 * * * * /root/servarr/tools/update-qbit-port.sh >> /var/log/update-qbit-port.log 2>&1`
+    3. This will run the update-qbit-port.sh script every 5 minutes and log results to /var/log/update-qbit-port.log.
+
 
 ## Getting around CGNAT
 There are a couple ways to get around CGNAT, mostly relying on a external server or 3rd party to point to your internal services.
 I used the following approach making use of a VPS.
 
 ### Requirements:
-- External server (VPS)
+- External server (VPS) w/ static public IP
 - Domain name
 
 ### Steps:
@@ -93,5 +110,3 @@ I used the following approach making use of a VPS.
 - ... Any other services you want accessible remotely.
 2. Host a Wireguard sever on the VPS, setup a connection between home network and VPS.
 3. Setup Nginx Proxy Manager on VPS. Add a proxy for each A record domain pointing to IP/Port of corresponding service.
-
-
