@@ -2,14 +2,14 @@ version: "3.8"
 
 services:
   jellyfin:
-    image: linuxserver/jellyfin
+    image: linuxserver/jellyfin:latest
     container_name: jellyfin
     environment:
       - PUID=1001
       - PGID=545
       - TZ=America/New_York
     volumes:
-      - /mnt/media/servarr/jellyfin/config:/config
+      - /root/servarr/config/jellyfin/config:/config
       - /mnt/media/servarr/downloads:/data/downloads
       - /mnt/media/servarr/movies:/movies
       - /mnt/media/servarr/tv:/tv

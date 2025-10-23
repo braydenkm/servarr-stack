@@ -4,32 +4,34 @@
 # - Creates required directories for ServarrStack
 
 
-# Verify path parameter
-if [[ -z $1 || ! -e $1 ]] ; then
-	echo "Path required to setup ServarrStack directory"
-	exit 1
-fi
+
+CONFIG_DIR="/root/servarr/config"
+MEDIA_DIR="/mnt/media/servarr"
 
 
 # Create directories
-TARGET_DIR="$1"
-mkdir -p "${TARGET_DIR}/downloads"
-mkdir -p "${TARGET_DIR}/movies"
-mkdir -p "${TARGET_DIR}/anime"
-mkdir -p "${TARGET_DIR}/tv"
-mkdir -p "${TARGET_DIR}/jellyfin/config"
-mkdir -p "${TARGET_DIR}/jellyseerr/config"
-mkdir -p "${TARGET_DIR}/qbittorrent/config"
-mkdir -p "${TARGET_DIR}/radarr/config"
-mkdir -p "${TARGET_DIR}/sonarr/config"
-mkdir -p "${TARGET_DIR}/prowlarr/config"
+mkdir -p "${MEDIA_DIR}/downloads"
+mkdir -p "${MEDIA_DIR}/movies"
+mkdir -p "${MEDIA_DIR}/anime"
+mkdir -p "${MEDIA_DIR}/tv"
+mkdir -p "${CONFIG_DIR}/jellyfin/config"
+mkdir -p "${CONFIG_DIR}/jellyseerr/config"
+mkdir -p "${CONFIG_DIR}/qbittorrent/config"
+mkdir -p "${CONFIG_DIR}/radarr/config"
+mkdir -p "${CONFIG_DIR}/sonarr/config"
+mkdir -p "${CONFIG_DIR}/prowlarr/config"
 
 
 # Done
 echo "ServarrStackk directory created."
 if command -v tree &>/dev/null ; then
-	tree "${TARGET_DIR}"
+	echo "${MEDIA_DIR}"
+	tree -L 1 "${MEDIA_DIR}"
+	echo ""
+	echo "${CONFIG_DIR}"
+	tree -L  2 "${CONFIG_DIR}"
 else
-	find "${TARGET_DIR}"
+	find "${MEDIA_DIR}"
+	find "${CONFIG_DIR}"
 fi
 

@@ -4,6 +4,6 @@
 # Environment variables
 env/
 
-# Wireguard VPN keys
-wireguard/keys/
+# Config files
+config/*
 

@@ -17,7 +17,7 @@ services:
       - TZ=America/New_York
       - WEBUI_PORT=8080
     volumes:
-      - /mnt/media/servarr/qbittorrent/config:/config
+      - /root/servarr/config/qbittorrent/config:/config
       - /mnt/media/servarr/downloads:/data/downloads
     network_mode: "service:gluetun"
     depends_on:
@@ -52,7 +52,7 @@ services:
       - PGID=545
       - TZ=America/New_York
     volumes:
-      - /mnt/media/servarr/radarr/config:/config
+      - /root/servarr/config/radarr/config:/config
       - /mnt/media/servarr/movies:/movies
       - /mnt/media/servarr/downloads:/data/downloads
     ports:
@@ -67,7 +67,7 @@ services:
       - PGID=545
       - TZ=America/New_York
     volumes:
-      - /mnt/media/servarr/sonarr/config:/config
+      - /root/servarr/config/sonarr/config:/config
       - /mnt/media/servarr/downloads:/data/downloads
       - /mnt/media/servarr/tv:/tv
       - /mnt/media/servarr/anime:/anime
@@ -83,7 +83,7 @@ services:
       - PGID=545
       - TZ=America/New_York
     volumes:
-      - /mnt/media/servarr/prowlarr/config:/config
+      - /root/servarr/config/prowlarr/config:/config
     ports:
       - 9696:9696
     restart: unless-stopped
@@ -96,7 +96,7 @@ services:
       - PGID=545
       - TZ=America/New_York
     volumes:
-      - /mnt/media/servarr/jellyseerr/config:/app/config
+      - /root/servarr/config/jellyseerr/config:/app/config
       - /mnt/media/servarr/movies:/movies
       - /mnt/media/servarr/tv:/tv
       - /mnt/media/servarr/anime:/anime
