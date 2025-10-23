@@ -3,11 +3,11 @@
 # SETUP DIRECTORIES
 # - Creates required directories for ServarrStack
 
-
-
+# Choose root directory for config and media.
+# Config ideally on SSD
 CONFIG_DIR="/root/servarr/config"
+# Media probably on HDD
 MEDIA_DIR="/mnt/media/servarr"
-
 
 # Create directories
 mkdir -p "${MEDIA_DIR}/downloads"
@@ -21,7 +21,6 @@ mkdir -p "${CONFIG_DIR}/radarr/config"
 mkdir -p "${CONFIG_DIR}/sonarr/config"
 mkdir -p "${CONFIG_DIR}/prowlarr/config"
 
-
 # Done
 echo "ServarrStackk directory created."
 if command -v tree &>/dev/null ; then
@@ -34,4 +33,3 @@ else
 	find "${MEDIA_DIR}"
 	find "${CONFIG_DIR}"
 fi
-
