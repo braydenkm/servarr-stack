@@ -12,7 +12,6 @@ source "${CURRENT_DIR}"/../env/qbit.env
 USER="${QBIT_USER}"
 PASS="${QBIT_PASS}"
 
-
 # Grab port
 STORED_PORT_FILE="/tmp/gluetun/forwarded_port"
 PORT_FILE="/tmp/port.tmp"
@@ -24,13 +23,11 @@ if [[ -z $PORT ]] ; then
 	exit 1
 fi
 
-
 # Grab session ID (SID) from API
 SID=$(curl -i -s -X POST \
 	-d "username=${USER}&password=${PASS}" \
 	http://localhost:8080/api/v2/auth/login \
 	| egrep -o 'SID=.{32}' | cut -c 5-)
-
 
 # Update port using API
 curl -X POST -s \
@@ -38,6 +35,4 @@ curl -X POST -s \
 	--cookie "SID=${SID}" \
 	http://localhost:8080/api/v2/app/setPreferences
 
-
 echo "$(date) - qBittorrent forwarding port updated to: ${PORT}"
-
